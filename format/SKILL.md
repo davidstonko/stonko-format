@@ -9,6 +9,12 @@ Apply this when the user wants a manuscript put into their standard submission f
 or invokes `/format`. It restyles an existing `.docx` and prepends a title page. The writing,
 statistics, table and figure rules below also apply whenever a manuscript is drafted or revised.
 
+## Order of precedence
+The target journal's author guidelines come first; this template fills every gap the journal leaves.
+Where a journal rule and this template disagree (citation style, reference format, abstract labels,
+heading labels, degrees on the title page, table rules, line numbering), follow the journal and note
+the change.
+
 ## Formatting specification
 - Page: US Letter, 8.5 x 11 in, 1-inch margins on all sides.
 - Font: Times New Roman, 11 pt, for ALL text (title, headings, body, captions, tables, references). No font is ever larger than 11 pt.
@@ -27,6 +33,9 @@ statistics, table and figure rules below also apply whenever a manuscript is dra
 - **Conclusions:** every claim in the Conclusions (Abstract and main text) must be supported by a result that is reported with a P value. Check each sentence of the Conclusions against the Results; a claim with no tested result behind it is cut or flagged, never softened and left in.
 - Never invent a number. A value that is not yet available is written as a yellow-highlighted `[placeholder]` so it cannot be missed before submission.
 - Capitalize figure labels, axis text and table headers in title case ("Year Before ABI", "BMT Status"); audit this across every figure and table when one changes.
+- **Results sentences lead with the clinical finding, then the statistic**: "L97-coded muscle necrosis was the strongest predictor of major amputation (aOR, 2.70; 95% CI, 2.44–2.99)", never "Estimates were aOR 1.05 (…) for fat, aOR 1.37 (…) for…". Order a list of estimates by size, largest first. Apply this to the whole paper, not one paragraph.
+- Methods states rules only; Results states results only. Every number in the Discussion already appears in the Results.
+- Do not repeat "pre-specified" through the Methods. Say once that the analysis plan, including all models and sensitivity analyses, was fixed before the data were examined.
 
 ## Statistics presentation (Hicks/Holscher house style)
 - **P values:** write `P=0.03`, `P=0.003`, `P<0.001`, `P<0.05`. Capital P, no spaces around `=` or `<`, leading zero, two decimals (three when P<0.01), never `P=0.000`. Same form after a qualifier (`adjusted P=0.008`, `P for interaction=0.02`).
@@ -47,19 +56,39 @@ statistics, table and figure rules below also apply whenever a manuscript is dra
 - Figure 1 is an EQUATOR-aligned (STROBE/RECORD) cohort flow diagram with exclusion reasons in side boxes and attrition tracked at each step, ending at the cohort for the primary outcome.
 - Supplemental tables and figures numbered S1, S2 … in the order first cited.
 
+## Tables: numbered in order of first mention
+- Tables are numbered by their first callout in the main text. Check this before every submission; it drifts when Results are reordered.
+- To renumber, update every place a table number appears: in-text callouts, the table titles, cross-references inside other tables' footnotes ("covariates listed in Table 2"), figure legends, and the Supplementary Material.
+- Move each table block (title, table, footnote and its section break, so landscape sections stay landscape) into the new order.
+- A footnote must not point forward to a later table; repeat the covariate list instead.
+- Make the number changes as tracked changes in David's name, then extract the accepted text and confirm first mentions run 1, 2, 3 …
+
 ## Figures
-- Arial (or a metric-compatible font) at 9 pt; top and right spines off; axis labels and tick labels in title case.
+- **One sans-serif face across every figure and every panel: Lato** (Regular and Bold only; Oct 2026 house reference style, replacing Arial). One text size within a figure (about 8 to 9 pt at final print width); panel letters may be one point larger. No serif text, no italics, no mixed families.
+- Top and right spines off; axis labels, tick labels and table-style row headers in title case. Flow-diagram box text is written as sentences (sentence case).
 - No title inside a main figure when the legend says the same thing. Multi-panel figures carry bold panel labels ("A. Basis of the Diagnosis"). Put the sample size in the axis label or legend.
 - A 95% CI on every estimate. Statistics printed inside a figure use the same house style as the text (`P<0.001`, `95% CI, 11.3–20.4`).
 - Group of interest first and in a consistent color across figures (vermillion for the group of interest, gray for the comparison group). Green, yellow and red are reserved for ordinal good, partial, none.
 - Kaplan-Meier figures carry confidence bands and a number-at-risk row aligned to the x ticks.
-- Export each figure as PNG at 600 dpi plus vector PDF and SVG with editable text.
+- Multi-panel figures that share rows repeat the row labels on every panel; row bands are blue (#d4e1f3), never gray.
+- **Flow diagrams and schematics** use the navy palette: ink #1f2d5a for text, borders and arrows; main-path boxes filled #eef1f8 with a navy border (~1.3 pt) and rounded corners; exclusion boxes white with a gray #9a9a9a border; counts on their own line as "n = 1,234"; exclusion boxes begin "Excluded," with indented lower-case sub-reasons; the analytic cohort box is bold.
+- **Flow diagram content.** The top box names the actual data source and how it was selected (e.g., "Discharges with a foot ulcer code in any diagnosis field, National Inpatient Sample, 2016 to 2022"), never a generic label the counts below contradict. When the data came as a pre-pulled extract (a JSCOR pull), find the request's code list, check against the data how it was actually pulled (principal vs any diagnosis position), and name the codes in the legend. Every exclusion in the Methods appears in the diagram, including those with n = 0, and each exclusion states its true cause (e.g., "no foot ulcer code in the first 30 diagnosis fields" when the analysis file truncates the diagnosis array).
+- Every number in a figure is read from the analysis output files, never typed.
+- Export each figure as PNG at 600 dpi plus vector PDF and SVG with editable text. When the journal wants TIFF, also save a CMYK TIFF (300 dpi or more), flattened onto white first so transparency does not turn black. When a figure's shape changes, update its height in the .docx so the aspect ratio holds.
 
 ## Journal of Vascular Surgery conventions
 - Citations are superscript numerals placed **after** punctuation (`…disease.³` / `…therapy,⁴⁻⁶`).
 - References: up to 6 authors then `et al`; `Journal Year;Volume:Pages.` with **no issue number** and abbreviated page ranges (`786-94`, `e1-e8`, `786-94.e2`).
 - After the Abstract, add **Article Highlights** with three labelled items (Type of Research, Key Findings, Take Home Message) and a **Table of Contents Summary** (2 to 3 sentences). Check current word limits in the JVS author guide before submission.
 - Datasets are cited as references. **JHU REACH:** cite `Chute CG, et al. JHU REACH (Version JHU.DS) [dataset]. doi:10.26144/DCMA-HA86` when first describing the data source in Methods ("the Johns Hopkins Research Enclave for Analyzing Clinical Health Data (REACH)"). No separate grant acknowledgment is listed by REACH.
+
+## Acknowledgement: JSCOR
+- **Any paper with Caitlin W. Hicks as an author (she directs JSCOR), or using data held or pulled by the Johns Hopkins Surgery Center for Outcomes Research (NIS, Medicare and the other JSCOR databases),** gets an **Acknowledgement** section with this sentence, verbatim:
+  > The authors would like to acknowledge the role of the Johns Hopkins Surgery Center for Outcomes Research (JSCOR) for supporting this study.
+- Place it after the Conclusions and before the COI/Funding statements and References, or where the journal puts acknowledgements.
+- Source: the README of David's JSCOR data-request code list (Stonko_DFU_NIS_Update_ICD10_CodeList_Aug2026.xlsx, section 8) mandates it for all outputs; the same sentence is in published JSCOR work (Bhandari et al., Ann Vasc Surg 2026, PMC13006805). JSCOR's website gives no wording of its own.
+- It is an acknowledgement, not funding; leave "Source of Funding: no funding was utilized" unless David says otherwise.
+- IRB sentence the group has published for NIS work, if one is needed (David supplies the IRB number): "The study design and methods for data collection were approved by the Johns Hopkins University School of Medicine Institutional Review Board. Informed consent was waived because the data was deidentified and publicly available." (Zhang et al., J Vasc Surg 2021, PMC8487910.)
 
 ## Common coauthors: verified roster
 
@@ -186,8 +215,13 @@ python scripts/apply_format.py <target.docx> \
 - Numbered, in PubMed/NLM (Vancouver) style: `Author AA, Author BB, Author CC, et al. Title of article. Journal Abbrev. Year;Volume(Issue):Pages.` List up to the journal's author limit, then `et al.` For JVS, drop the issue number and abbreviate pages (see above).
 - Do not include editorial notes at the top of the References section.
 - **Verify every reference against its PubMed record**: author order and initials, full untruncated
-  title, journal, year, volume, issue, pages, DOI, PMID. Use NCBI E-utilities (`efetch`/`esummary`,
-  `db=pubmed`) rather than scraping PubMed HTML, which rate-limits.
+  title, journal, year, volume, issue, pages, DOI, PMID.
+- **How to reach PubMed (works as of Oct 2026).** E-utilities is robots-disallowed and PubMed's HTML serves automated fetchers (WebFetch, subagents) a CAPTCHA; do not work around either. Instead:
+  1. Build one query of every DOI in the list: `10.xxxx/yyy[aid] OR 10.xxxx/zzz[aid] OR …`.
+  2. Open `https://pubmed.ncbi.nlm.nih.gov/?term=<url-encoded query>&size=200&format=pubmed` in the desktop **built-in browser** (`preview_start`). Confirm the hit count equals the number of DOIs. If a CAPTCHA appears, ask David to clear it; never solve it yourself.
+  3. Pull only the MEDLINE fields (PMID, TI, AU, TA, DP, VI, IP, PG, LID, PT) with one `javascript_tool` call over the `<pre>` blocks, compare each to the reference list, and fix differences as tracked changes in David's name. Record the PMID list in the project notes.
+- What the comparison usually catches: initials as PubMed indexes them ("McDermott K", not "KM"), accents ("Senneville É", "Aragón-Sánchez J"), suffixes ("Black JH 3rd", "Mills JL Sr") and their absence, abbreviated page ranges to expand ("220-34.e1-2"), and lower-case titles. PubMed can itself be wrong: an initial that differs from the same author's other records (one "Sherman RE" among many "Sherman RL") is flagged to David, not copied.
+- **Check the claim each reference supports** against the abstract or the PMC full text; tighten the sentence when the source supports only part of it, and say which reference carries the claim.
 - **Verify the author list, not just the title and PMID.** A citation assembled from a summary can
   carry authors from a neighbouring paper; this has happened.
 - Papers published online ahead of print have no volume or pages. Write `Published online {Month D,

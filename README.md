@@ -7,6 +7,7 @@ A [Claude skill](https://support.claude.com/en/articles/12512180-use-skills-in-c
 - Restyles a `.docx`: Times New Roman 11 pt everywhere, US Letter with 1-inch margins, bold 11 pt headings, single-spaced title page and Abstract, double-spaced body with a 0.5 in first-line indent, single-spaced references and tables, wide tables kept in landscape.
 - Prepends the title page: working-paper line with date, title, short running title, authors with superscript affiliations, correspondence, funding, emails, keywords.
 - Carries the house style for reporting results: `P=0.03`, `P<0.001`, `(aOR, 0.57; 95% CI, 0.39–0.83; P=0.003)`, median (IQR) as `65 (58–74)`, small-cell suppression, and the rule that every claim in the Conclusions is backed by a result with a P value.
+- Adds the JSCOR acknowledgement to any paper with Caitlin Hicks or JSCOR data.
 - Knows Journal of Vascular Surgery conventions (superscript citations after punctuation, reference format, Article Highlights, Table of Contents Summary).
 - Keeps a verified roster of frequent coauthors (degrees and affiliations as printed) and the procedure for verifying anyone not on it.
 
@@ -43,6 +44,7 @@ The title-page defaults (author, correspondence address, email, funding sentence
 
 ## Changelog
 
+- **2.1 (Oct 2026).** Order of precedence (journal first); JSCOR acknowledgement for Hicks/JSCOR papers; Results lead with the finding; tables numbered in order of first mention with a renumbering procedure; Lato figure face and navy flow-diagram style, flow-diagram content rules, CMYK TIFF export; PubMed reference check through the desktop browser (E-utilities blocked) and claim checks.
 - **2.0 (Oct 2026).** House style for statistics, tables and figures; Conclusions rule; JVS conventions; REACH dataset citation; multi-author title page (`--authors`, `--affil`); body indent and paragraph spacing; single-spaced tables; landscape table sections preserved; black headings; style check.
 - **1.0 (Aug 2026).** Template, title page, verified coauthor roster, reference verification rules.
 
