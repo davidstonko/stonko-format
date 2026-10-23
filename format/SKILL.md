@@ -33,13 +33,13 @@ the change.
 - **Conclusions:** every claim in the Conclusions (Abstract and main text) must be supported by a result that is reported with a P value. Check each sentence of the Conclusions against the Results; a claim with no tested result behind it is cut or flagged, never softened and left in.
 - Never invent a number. A value that is not yet available is written as a yellow-highlighted `[placeholder]` so it cannot be missed before submission.
 - Capitalize figure labels, axis text and table headers in title case ("Year Before ABI", "BMT Status"); audit this across every figure and table when one changes.
-- **Results sentences lead with the clinical finding, then the statistic**: "L97-coded muscle necrosis was the strongest predictor of major amputation (aOR, 2.70; 95% CI, 2.44–2.99)", never "Estimates were aOR 1.05 (…) for fat, aOR 1.37 (…) for…". Order a list of estimates by size, largest first. Apply this to the whole paper, not one paragraph.
+- **Results sentences lead with the clinical finding, then the statistic**: "L97-coded muscle necrosis was the strongest predictor of major amputation (aOR 2.70, 95% CI: 2.44–2.99)", never "Estimates were aOR 1.05 (…) for fat, aOR 1.37 (…) for…". Order a list of estimates by size, largest first. Apply this to the whole paper, not one paragraph.
 - Methods states rules only; Results states results only. Every number in the Discussion already appears in the Results.
 - Do not repeat "pre-specified" through the Methods. Say once that the analysis plan, including all models and sensitivity analyses, was fixed before the data were examined.
 
 ## Statistics presentation (Hicks/Holscher house style)
 - **P values:** write `P=0.03`, `P=0.003`, `P<0.001`, `P<0.05`. Capital P, no spaces around `=` or `<`, leading zero, two decimals (three when P<0.01), never `P=0.000`. Same form after a qualifier (`adjusted P=0.008`, `P for interaction=0.02`).
-- **In text**, effect, CI and P go in one parenthetical, separated by semicolons: `(aOR, 0.57; 95% CI, 0.39–0.83; P=0.003)`. Never "95% CI a, b" or "[a, b]".
+- **In text**, write the estimate, then the CI in parentheses with a colon after "95% CI": `aOR 2.70 (95% CI: 2.44–2.99)`. Add a P value inside the same parentheses after a comma: `aOR 2.70 (95% CI: 2.44–2.99, P<0.001)`. When the estimate itself sits in a parenthetical after the finding, use commas to avoid nested parentheses: `…strongest predictor of major amputation (aOR 2.70, 95% CI: 2.44–2.99)`. No semicolons inside the statistic. Never "95% CI a, b", "95% CI, a–b" or "[a, b]".
 - **CI ranges:** en dash (`0.39–0.83`); write "to" when either bound is negative (`−4.1 to 2.3`), using a true minus sign.
 - **In tables:** `0.57 (0.39–0.83)` with a separate P column (`0.03`, `<0.001`); reference levels shown as `Ref`.
 - **Medians:** `65 (58–74)`, labelled median (IQR) in the row or column header. Counts: `457 (26.2)` with n (%) in the header, thousands separators on counts (`1,045`).
@@ -64,10 +64,10 @@ the change.
 - Make the number changes as tracked changes in David's name, then extract the accepted text and confirm first mentions run 1, 2, 3 …
 
 ## Figures
-- **One sans-serif face across every figure and every panel: Lato** (Regular and Bold only; Oct 2026 house reference style, replacing Arial). One text size within a figure (about 8 to 9 pt at final print width); panel letters may be one point larger. No serif text, no italics, no mixed families.
+- **One sans-serif face across every figure and every panel: Arial** (or a metric-compatible font such as Liberation Sans where Arial is not installed) at 9 pt. One text size within a figure; panel letters may be one point larger. No serif text, no italics, no mixed families.
 - Top and right spines off; axis labels, tick labels and table-style row headers in title case. Flow-diagram box text is written as sentences (sentence case).
 - No title inside a main figure when the legend says the same thing. Multi-panel figures carry bold panel labels ("A. Basis of the Diagnosis"). Put the sample size in the axis label or legend.
-- A 95% CI on every estimate. Statistics printed inside a figure use the same house style as the text (`P<0.001`, `95% CI, 11.3–20.4`).
+- A 95% CI on every estimate. Statistics printed inside a figure use the same house style as the text (`P<0.001`, `95% CI: 11.3–20.4`).
 - Group of interest first and in a consistent color across figures (vermillion for the group of interest, gray for the comparison group). Green, yellow and red are reserved for ordinal good, partial, none.
 - Kaplan-Meier figures carry confidence bands and a number-at-risk row aligned to the x ticks.
 - Multi-panel figures that share rows repeat the row labels on every panel; row bands are blue (#d4e1f3), never gray.

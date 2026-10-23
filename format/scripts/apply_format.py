@@ -27,7 +27,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 from docx.text.paragraph import Paragraph
 
-VERSION = "2.0"
+VERSION = "2.2"
 FONT = "Times New Roman"
 SZ = Pt(11)
 BLACK = RGBColor(0, 0, 0)
@@ -280,8 +280,8 @@ def style_check(doc):
         ("em dash (use a comma, parentheses or a new sentence)", r"—"),
         ("P value not in house style (want P=0.03, P=0.003, P<0.001)",
          r"\b[pP]\s+[=<>]\s*\.?\d[\d.]*|\b[pP][=<>]\s+\.?\d[\d.]*|\b[pP]\s*[=<>]\s*\.\d+|\bp\s*[=<>]\s*\d[\d.]*|\b[pP]\s*=\s*0?\.000\b"),
-        ("confidence interval not in house style (want 95% CI, 0.39–0.83)",
-         r"95%\s*CI[:]?\s*[\[(]?\s*-?\d[\d.]*\s*,\s*-?\d[\d.]*|95%\s*CI\s+-?\d[\d.]*|95%\s*CI,\s*\d[\d.]*\s*-\s*\d[\d.]*"),
+        ("confidence interval not in house style (want aOR 2.70 (95% CI: 2.44–2.99))",
+         r"95%\s*CI\s*[:,]?\s*[\[(]?\s*-?\d[\d.]*\s*,\s*-?\d[\d.]*|95%\s*CI\s*,\s*-?\d|95%\s*CI\s+-?\d|95%CI|95%\s*CI:\s*-?\d[\d.]*\s*-\s*\d"),
     ]
     warned = False
     for label, pat in checks:
