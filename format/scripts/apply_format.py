@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the Stonko manuscript template to a .docx (helper v2, Oct 2026).
+"""Apply the Stonko manuscript template to a .docx (helper v2.3, Nov 2026).
 
 Times New Roman 11 pt everywhere, US Letter with 1 in margins, bold 11 pt black headings,
 single-spaced title page and Abstract, double-spaced body with a 0.5 in first-line indent and
@@ -7,7 +7,8 @@ no space between paragraphs, single-spaced references (6 pt after each) and tabl
 table sections preserved, and a prepended title page.
 
 Formatting only: the text of the manuscript is never changed. A style check (em dashes,
-P values, confidence intervals, fonts over 11 pt) is printed at the end as warnings.
+P values, confidence intervals, fonts over 11 pt) and an author check (every author against the
+verified roster) are printed at the end as warnings.
 
     python apply_format.py in.docx --title "Full title" --short-title "Running title" \
         --keywords "kw1, kw2" --date "Oct. 2026" \
@@ -27,7 +28,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 from docx.text.paragraph import Paragraph
 
-VERSION = "2.2"
+VERSION = "2.3"
 FONT = "Times New Roman"
 SZ = Pt(11)
 BLACK = RGBColor(0, 0, 0)
@@ -37,6 +38,20 @@ DEFAULT_AFFIL = ("Division of Vascular Surgery and Endovascular Therapy, Departm
 DEFAULT_FUNDING = "no funding was utilized."
 CORRESPONDENCE = ["David P Stonko", "600 N Wolfe St", "Halsted 668", "Baltimore, MD 21287"]
 EMAILS = ["David Stonko: dstonko1@jhmi.edu"]
+
+# Verified roster (SKILL.md, "Common coauthors"): name as printed -> degrees as printed.
+# None = name confirmed by David, degrees not verified in print.
+ROSTER = {
+    "David P. Stonko": "MD, MS",
+    "Courtenay M. Holscher": "MD, PhD",
+    "Ying Wei Lum": "MD, MPH",
+    "James H. Black III": "MD",
+    "Chen Dun": "PhD, MHS",
+    "Christopher J. Abularrage": "MD",
+    "Caitlin W. Hicks": "MD, MS",
+    "Gregory N. McKay": None,
+}
+DEGREE = re.compile(r"^(MD|PhD|MS|MPH|MHS|MBA|DO|ScD|MSc|MA|BS|BA|RN|PA-C|PharmD|DrPH|MSCE|MSHP|FACS)$")
 
 # Heading 1 text (lower case, numbering stripped) -> region of the manuscript
 FRONT = {"abstract", "article highlights", "table of contents summary", "structured abstract"}
@@ -280,8 +295,9 @@ def style_check(doc):
         ("em dash (use a comma, parentheses or a new sentence)", r"—"),
         ("P value not in house style (want P=0.03, P=0.003, P<0.001)",
          r"\b[pP]\s+[=<>]\s*\.?\d[\d.]*|\b[pP][=<>]\s+\.?\d[\d.]*|\b[pP]\s*[=<>]\s*\.\d+|\bp\s*[=<>]\s*\d[\d.]*|\b[pP]\s*=\s*0?\.000\b"),
-        ("confidence interval not in house style (want aOR 2.70 (95% CI: 2.44–2.99))",
-         r"95%\s*CI\s*[:,]?\s*[\[(]?\s*-?\d[\d.]*\s*,\s*-?\d[\d.]*|95%\s*CI\s*,\s*-?\d|95%\s*CI\s+-?\d|95%CI|95%\s*CI:\s*-?\d[\d.]*\s*-\s*\d"),
+        ("confidence interval not in house style (want aOR, 0.57; 95% CI, 0.39\u20130.83; P=0.003)",
+         r"95%CI|95%\s*CI\s*:|95%\s*CI\s*,?\s*[\[(]?\s*-?\d[\d.]*\s*,\s*-?\d|95%\s*CI\s+-?\d"
+         r"|95%\s*CI\s*,\s*\d[\d.]*\s*-\s*\d"),
     ]
     warned = False
     for label, pat in checks:
@@ -298,6 +314,46 @@ def style_check(doc):
         print(f"  style check: {big} runs larger than 11 pt")
     if not warned:
         print("  style check: clean")
+
+
+def split_author(entry):
+    """'Gregory N. McKay, MD, PhD' -> ('Gregory N. McKay', 'MD, PhD')"""
+    parts = [x.strip() for x in entry.split(",")]
+    name, degs = [], []
+    for x in parts:
+        (degs if (degs or (name and DEGREE.match(x))) else name).append(x)
+    return ", ".join(name), ", ".join(degs)
+
+
+def authors_in_doc(doc):
+    """Author line of an existing title page: the first short paragraph with '; ' and a degree."""
+    for p in all_paragraphs(doc)[:40]:
+        t = p.text
+        if ";" in t and re.search(r",\s*(MD|PhD|MS|MPH|DO)\b", t) and len(t) < 600:
+            return [re.sub(r"[\d,]+$", "", x.strip()).strip() for x in t.split(";") if x.strip()]
+    return []
+
+
+def author_check(entries):
+    """Every author against the verified roster. Never fills or corrects a name; reports only."""
+    if not entries:
+        print("  author check: no author line found; check the title page by hand")
+        return
+    for e in entries:
+        name, degs = split_author(e)
+        if "*" in name or not name:
+            print(f"  author check: placeholder '{e}'. Ask David for the full name; do not fill it in")
+        elif name in ROSTER:
+            want = ROSTER[name]
+            if want is None:
+                print(f"  author check: {name}: name confirmed, degrees '{degs}' NOT verified in print")
+            elif degs != want:
+                print(f"  author check: {name}: degrees '{degs}' differ from roster '{want}'")
+        else:
+            close = [r for r in ROSTER if r.split()[-1] == name.split()[-1]]
+            hint = f" (roster has {close[0]})" if close else ""
+            print(f"  author check: {name}: NOT on the verified roster{hint}. Verify name, middle initial, "
+                  "degrees and affiliation in print, or ask David")
 
 
 def main():
@@ -324,6 +380,7 @@ def main():
     doc.save(a.output)
     print("Formatted ->", a.output)
     style_check(doc)
+    author_check([n for n, _ in parse_authors(a.authors)] if not a.no_title_page else authors_in_doc(doc))
 
 
 if __name__ == "__main__":

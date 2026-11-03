@@ -1,6 +1,6 @@
 ---
-name: format
-description: "Format a Word manuscript (.docx) to David P. Stonko's standard journal-submission template and house style. Times New Roman 11 pt throughout, double-spaced body with single-spaced title, 1-inch margins on US Letter, bold 11 pt section headings (no larger fonts anywhere), and a title page carrying the standard author, affiliation, correspondence, funding, email and keywords block. Also holds his house rules for statistics (P values, confidence intervals), tables, figures, references, Conclusions and Journal of Vascular Surgery conventions. Trigger when the user says '/format', 'format this manuscript', 'apply my template', 'format for submission', asks to add a title page in their house style, or asks for a paper, table or figure in his house style."
+name: "format"
+description: "Format a Word manuscript (.docx) to David P. Stonko's standard journal-submission template and house style. Trigger on '/format', 'format this manuscript', 'apply my template', 'format for submission', or a paper, table or figure in his house style."
 ---
 
 # /format: manuscript formatting to the Stonko house template
@@ -33,13 +33,13 @@ the change.
 - **Conclusions:** every claim in the Conclusions (Abstract and main text) must be supported by a result that is reported with a P value. Check each sentence of the Conclusions against the Results; a claim with no tested result behind it is cut or flagged, never softened and left in.
 - Never invent a number. A value that is not yet available is written as a yellow-highlighted `[placeholder]` so it cannot be missed before submission.
 - Capitalize figure labels, axis text and table headers in title case ("Year Before ABI", "BMT Status"); audit this across every figure and table when one changes.
-- **Results sentences lead with the clinical finding, then the statistic**: "L97-coded muscle necrosis was the strongest predictor of major amputation (aOR 2.70, 95% CI: 2.44–2.99)", never "Estimates were aOR 1.05 (…) for fat, aOR 1.37 (…) for…". Order a list of estimates by size, largest first. Apply this to the whole paper, not one paragraph.
+- **Results sentences lead with the clinical finding, then the statistic**: "L97-coded muscle necrosis was the strongest predictor of major amputation (aOR, 2.70; 95% CI, 2.44–2.99)", never "Estimates were aOR 1.05 (…) for fat, aOR 1.37 (…) for…". Order a list of estimates by size, largest first. Apply this to the whole paper, not one paragraph.
 - Methods states rules only; Results states results only. Every number in the Discussion already appears in the Results.
 - Do not repeat "pre-specified" through the Methods. Say once that the analysis plan, including all models and sensitivity analyses, was fixed before the data were examined.
 
 ## Statistics presentation (Hicks/Holscher house style)
 - **P values:** write `P=0.03`, `P=0.003`, `P<0.001`, `P<0.05`. Capital P, no spaces around `=` or `<`, leading zero, two decimals (three when P<0.01), never `P=0.000`. Same form after a qualifier (`adjusted P=0.008`, `P for interaction=0.02`).
-- **In text**, write the estimate, then the CI in parentheses with a colon after "95% CI": `aOR 2.70 (95% CI: 2.44–2.99)`. Add a P value inside the same parentheses after a comma: `aOR 2.70 (95% CI: 2.44–2.99, P<0.001)`. When the estimate itself sits in a parenthetical after the finding, use commas to avoid nested parentheses: `…strongest predictor of major amputation (aOR 2.70, 95% CI: 2.44–2.99)`. No semicolons inside the statistic. Never "95% CI a, b", "95% CI, a–b" or "[a, b]".
+- **In text**, effect, CI and P go in one parenthetical, separated by semicolons: `(aOR, 0.57; 95% CI, 0.39–0.83; P=0.003)`. Never "95% CI a, b" or "[a, b]".
 - **CI ranges:** en dash (`0.39–0.83`); write "to" when either bound is negative (`−4.1 to 2.3`), using a true minus sign.
 - **In tables:** `0.57 (0.39–0.83)` with a separate P column (`0.03`, `<0.001`); reference levels shown as `Ref`.
 - **Medians:** `65 (58–74)`, labelled median (IQR) in the row or column header. Counts: `457 (26.2)` with n (%) in the header, thousands separators on counts (`1,045`).
@@ -64,10 +64,10 @@ the change.
 - Make the number changes as tracked changes in David's name, then extract the accepted text and confirm first mentions run 1, 2, 3 …
 
 ## Figures
-- **One sans-serif face across every figure and every panel: Arial** (or a metric-compatible font such as Liberation Sans where Arial is not installed) at 9 pt. One text size within a figure; panel letters may be one point larger. No serif text, no italics, no mixed families.
+- **One sans-serif face across every figure and every panel: Lato** (Regular and Bold only; Oct 2026 house reference style, replacing Arial). One text size within a figure (about 8 to 9 pt at final print width); panel letters may be one point larger. No serif text, no italics, no mixed families.
 - Top and right spines off; axis labels, tick labels and table-style row headers in title case. Flow-diagram box text is written as sentences (sentence case).
 - No title inside a main figure when the legend says the same thing. Multi-panel figures carry bold panel labels ("A. Basis of the Diagnosis"). Put the sample size in the axis label or legend.
-- A 95% CI on every estimate. Statistics printed inside a figure use the same house style as the text (`P<0.001`, `95% CI: 11.3–20.4`).
+- A 95% CI on every estimate. Statistics printed inside a figure use the same house style as the text (`P<0.001`, `95% CI, 11.3–20.4`).
 - Group of interest first and in a consistent color across figures (vermillion for the group of interest, gray for the comparison group). Green, yellow and red are reserved for ordinal good, partial, none.
 - Kaplan-Meier figures carry confidence bands and a number-at-risk row aligned to the x ticks.
 - Multi-panel figures that share rows repeat the row labels on every panel; row bands are blue (#d4e1f3), never gray.
@@ -77,9 +77,16 @@ the change.
 - Export each figure as PNG at 600 dpi plus vector PDF and SVG with editable text. When the journal wants TIFF, also save a CMYK TIFF (300 dpi or more), flattened onto white first so transparency does not turn black. When a figure's shape changes, update its height in the .docx so the aspect ratio holds.
 
 ## Journal of Vascular Surgery conventions
+- **Author instructions on file.** David uploaded the JVS *Information for Authors* (J Vasc Surg, July 2016, pp. 15A-21A, PII S0741-5214(16)30303-2). The full text and a summary of the key rules are saved in the claude.ai Project "REACH database: Management of patients with PAD" as `reference/JVS_Information_for_Authors_Jul2016.md`. Read it before formatting or cutting any JVS paper, since jvascsurg.org's author page blocks automated fetching. It is the 2016 version, so check the live page for anything newer (it predates the Article Highlights and Table of Contents Summary).
+- **Application for Publication form.** JVS requires its own Word form with every submission (corresponding author, originality, contributions table, conflicts, sponsors, off-label use, signature). A blank copy is on David's Mac at `~/Projects/REACH_PAD/templates/JVS_Application_for_Publication_TEMPLATE.docx`, with a filled REACH PAD example beside it. The form text, a field-by-field map (content-control order, table columns) and fill instructions are in the same Project at `reference/JVS_Application_for_Publication.md`. Fill it from the actual template, never from memory. Contribution roles, conflicts and prior presentation come from David and the coauthors, never inferred.
+- **Clinical practice guidelines paragraph (Editorial Manager checklist).** At submission JVS asks authors to confirm (True/False) that a short paragraph in the Discussion or Introduction places the study in perspective with the most recent relevant clinical practice guidelines from any society or group. Every JVS paper must have one before submission: name the current guidelines (for example the 2024 ACC/AHA/SVS multisociety PAD guideline and the 2024 ESC guideline), cite them, and state how the findings and definitions fit or depart from them. Check this during drafting and again before submission, and point David to the paragraph when he answers the checklist.
+- **Clinical Research limits (from that guide):** 8 authors, structured abstract 250 to 400 words (about 250 preferred, never more than 400), body 3,500 words, 10 figures, 10 tables, 40 references. Long methods and extra analyses can go to an online appendix (Supplemental Methods) rather than be cut.
+- **Title:** declarative, states the topic and the result. No question, **no colon** or other punctuation that makes it two parts, no article type, no statistical method, no institution name.
+- **No abbreviations in the title or abstract.** Define every abbreviation at first use. No references, tables, figures or trademarks in the abstract, and give numerical results.
+- JVS submission files: abstract, tables and figure legends are uploaded as separate files. The journal's instructions number tables in Roman numerals. Figures need 300 dpi or more (line art 1200 dpi). An Author Contribution Statement is published at the end of the article, and conflicts of interest, the statistician's name and any trial registration go on the Application for Publication.
 - Citations are superscript numerals placed **after** punctuation (`…disease.³` / `…therapy,⁴⁻⁶`).
 - References: up to 6 authors then `et al`; `Journal Year;Volume:Pages.` with **no issue number** and abbreviated page ranges (`786-94`, `e1-e8`, `786-94.e2`).
-- After the Abstract, add **Article Highlights** with three labelled items (Type of Research, Key Findings, Take Home Message) and a **Table of Contents Summary** (2 to 3 sentences). Check current word limits in the JVS author guide before submission.
+- Add **Article Highlights** with three labelled items (Type of Research, Key Findings, Take Home Message) and a **Table of Contents Summary** (first sentence design and main finding, second the conclusion). Current JVS places them just before the Abstract. Key Findings up to 300 characters, Table of Contents Summary up to 400.
 - Datasets are cited as references. **JHU REACH:** cite `Chute CG, et al. JHU REACH (Version JHU.DS) [dataset]. doi:10.26144/DCMA-HA86` when first describing the data source in Methods ("the Johns Hopkins Research Enclave for Analyzing Clinical Health Data (REACH)"). No separate grant acknowledgment is listed by REACH.
 
 ## Acknowledgement: JSCOR
@@ -156,6 +163,31 @@ be PhD, MHS, ScD, or a pair.
    *verified in print* / *inferred* / *not verified*. **If you cannot find a degree in print, say "not
    verified" and ask.** That is the correct answer and far more useful than a plausible guess.
 
+5. **Never fill an author slot yourself.** When a draft has a placeholder (`***`, "planned", a first
+   name only) or a nickname, do not type in a name. Ask David for the author's full name as it should
+   print, including the middle initial, then verify degrees and affiliation as above. Write a nickname
+   only if David says that is how the author publishes.
+
+**Gregory N. McKay** (not "Greg McKay"; confirmed by David, Nov 2026). Degree and affiliation **not
+verified**: public listings show him as an MD-PhD candidate at Johns Hopkins, so check whether he now
+prints MD, PhD before each submission. In Oct 2026 Claude filled this author's placeholder with a
+nickname and an unverified degree, and the error reached a final submission package before David
+caught it. That is why the author check below exists.
+
+## Author check before every submission (never skip)
+Run this on the final file before any package is built, every time, even when the author line looks
+finished or came from a coauthor's edit. A wrong name passes every other check, because those checks
+compare files against the manuscript.
+- List every author on the title page with full name, middle initial, degrees and affiliation numbers.
+- Check each one against the verified roster above. Anyone not on the roster is checked in print as
+  above, or reported to David as *not verified*. A placeholder, a nickname or a missing middle initial
+  is a stop, not a guess.
+- Check that each affiliation number points to the right line, and that the correspondence block,
+  emails, the Abstract file's title page, the visual abstract author line and any journal form use the
+  same names and initials.
+- Report the result to David as a short table (author, as printed, source, status) and wait for his
+  answer on anything not verified before calling the package final.
+
 ## Title page (prepend, then a page break before the Abstract/body)
 Build these lines, each Times New Roman 11 pt, single spaced. Ask the user for any field marked {…} that is not already known.
 
@@ -204,7 +236,7 @@ python scripts/apply_format.py <target.docx> \
 
 - `--authors` lists authors in order with affiliation numbers after `^`; `--affil` is repeated once per affiliation in order of first appearance. Omit both for the single-author default. `--funding` overrides the funding sentence. `--no-title-page` restyles a paper that already has its title page.
 - The helper relies on Word heading styles (Heading 1 for Abstract, Introduction, Methods, Results, Discussion, References, Figure Legends; Heading 2 and below for subsections). Apply those first if the source uses bold text for headings.
-- It ends with a style check that prints warnings for em dashes, P values and confidence intervals that are not in house style, and any font over 11 pt. It reports only; fix the text by hand or ask David.
+- It ends with a style check that prints warnings for em dashes, P values and confidence intervals that are not in house style, and any font over 11 pt, then an author check that compares every author (from `--authors`, or the existing title page with `--no-title-page`) against the verified roster and flags placeholders, names not on the roster and degrees that differ. It reports only; fix the text by hand or ask David.
 - If the title, short title, keywords or author order are unknown, ask the user before running.
 - Then render to PDF (`soffice --headless --convert-to pdf`) and look at the pages: title single spaced, Abstract on its own page, body double spaced with indents, tables single spaced, wide tables still landscape.
 - The specification above is authoritative. If the installed helper is the older one (no `--authors` in `--help`), run it with the flags it has, then fix by hand what it misses: author line and affiliations, single-spaced title, black bold headings, 0.5 in body indent with 0 pt paragraph spacing, page break before the Introduction, single-spaced tables, 6 pt after each reference, and landscape table sections.
