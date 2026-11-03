@@ -48,7 +48,7 @@ The text of the manuscript is never changed. The run ends with a style check tha
 2. **Conformance pass** as tracked changes: JVS limits, title and abstract rules, Article Highlights, Table of Contents Summary, the clinical practice guidelines paragraph and the AI-use declaration that Editorial Manager asks about, Roman-numeral tables, JVS reference style, Editorial Manager's preferred order.
 3. **The package**: separate manuscript, abstract, table and legend files, 1200 dpi TIFF figures from the vector PDFs, online supplement, and a locked master.
 4. **A draft visual abstract** from your last JVS PowerPoint, with the title and numbers taken from the manuscript.
-5. **The Application for Publication** filled from the journal's own form, with anything unconfirmed highlighted.
+5. **The Application for Publication** filled from the journal's own form, with anything unconfirmed asked about rather than guessed.
 6. **Editorial Manager checklist answers**, each pointing to where the manuscript supports it.
 7. **A full audit**: authors checked against the roster or a printed byline, then every number, title and name in every file checked against the final manuscript, then the same check repeated by a fresh agent that has not seen the drafting.
 
@@ -60,7 +60,7 @@ The title-page defaults (author, correspondence address, email, funding sentence
 
 ## Changelog
 
-- **2.3 (Nov 2026).** Author check before every submission (skill and helper), never fill an author slot; statistics in text written `(aOR, 0.57; 95% CI, 0.39–0.83; P=0.003)` and the helper's CI check updated to match (2.2's check flagged the correct form); figures in Lato; JVS Application for Publication, clinical practice guidelines paragraph; /jvsformat fork added.
+- **2.3 (Nov 2026).** No highlighting, comments or placeholders in any final or submission file; author check before every submission (skill and helper), never fill an author slot; statistics in text written `(aOR, 0.57; 95% CI, 0.39–0.83; P=0.003)` and the helper's CI check updated to match (2.2's check flagged the correct form); figures in Lato; JVS Application for Publication, clinical practice guidelines paragraph; /jvsformat fork added.
 - **2.2 (Oct 2026).** Statistics in text written `aOR 2.70 (95% CI: 2.44–2.99)` (style check updated); figures back to Arial.
 - **2.1 (Oct 2026).** Order of precedence (journal first); JSCOR acknowledgement for Hicks/JSCOR papers; Results lead with the finding; tables numbered in order of first mention with a renumbering procedure; navy flow-diagram style, flow-diagram content rules, CMYK TIFF export; PubMed reference check through the desktop browser (E-utilities blocked) and claim checks.
 - **2.0 (Oct 2026).** House style for statistics, tables and figures; Conclusions rule; JVS conventions; REACH dataset citation; multi-author title page (`--authors`, `--affil`); body indent and paragraph spacing; single-spaced tables; landscape table sections preserved; black headings; style check.

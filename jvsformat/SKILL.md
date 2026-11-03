@@ -42,7 +42,7 @@ Then make every piece below, in this order.
 - **Clinical practice guidelines paragraph.** EM asks authors to confirm (True/False) a short paragraph in the Discussion or Introduction that places the study against the most recent relevant guidelines from any society. Make sure one exists and is cited (for PAD: the 2024 ACC/AHA/SVS multisociety guideline and the 2024 ESC guideline). Note where it is so David can answer the checkbox.
 - **AI disclosure (EM item "Use of AI Tools in Research and Writing").** JVS follows Elsevier policy:
   - Writing help (editing, outlining, summarizing, reference and format checks, translation) goes in a section placed **directly before the References**, using the journal's wording: "Declaration of Generative AI and AI-Assisted Technologies in the Writing Process. During the preparation of this work the authors used [tool] in order to [reason]. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication." Name Claude (Anthropic) and list what it actually did on this paper.
-  - AI used in the research itself (study design, data collection, analysis code, statistics, charts) is described in the **Methods**, in enough detail for reproducibility, and in figure captions where it drew a figure. Only David can say what was used; draft the sentence and highlight it for him to confirm or delete.
+  - AI used in the research itself (study design, data collection, analysis code, statistics, charts) is described in the **Methods**, in enough detail for reproducibility, and in figure captions where it drew a figure. Only David can say what was used: ask him before building the package, then write the sentence as he confirms it. Never leave it highlighted for him to decide in the file.
   - Spelling and grammar checks alone need no disclosure.
 - **Not in the manuscript:** author contributions and conflicts of interest go on the Application for Publication form, not in the text.
 - **Acknowledgement:** add the JSCOR sentence when /format calls for it.
@@ -72,7 +72,7 @@ If a file is revised after David has a copy, save it as `_v2`, `_v3`, never over
 
 ## 5. Application for Publication
 - Fill the real template with python-docx: content controls for the title, corresponding author, checkboxes and date; the contributions table (rows per author, columns per role, with Approval and Accountability checked for every author); COI, sponsors and off-label fields.
-- Roles, conflicts, prior presentation and the signer come from David. Highlight anything not yet confirmed in yellow.
+- Roles, conflicts, prior presentation and the signer come from David. Ask about anything not yet confirmed in the reply; the form itself carries no highlighting.
 - The signer and the person named as corresponding author must be consistent. Flag it if they differ.
 
 ## 6. Editorial Manager checklist answers
@@ -82,5 +82,5 @@ In the 00 checklist, draft an answer for each EM item David will meet, with the 
 - **Authors first.** Run the /format "Author check before every submission" again on the final manuscript, against the roster or a printed byline, not against the other files. A consistency check cannot catch a name that is wrong in the manuscript itself (an Oct 2026 package nearly went out with a coauthor's nickname this way). Then confirm every file (title pages, Abstract file, cover letter, visual abstract author line, Application for Publication names and initials, EM author entries) matches it.
 - Extract text from every file in the package and check against the final manuscript: the title (character for character), author list, order and credentials, every number in the cover letter, visual abstract, figures, legends and Highlights, and table and figure numbering.
 - Run a fresh agent with no access to the drafting history to repeat the check from the files alone, and reconcile what it finds.
-- Check the counts against the limits again after the final accept, and search the manuscript for any yellow highlight left in.
+- Check the counts against the limits again after the final accept. Search every package file for highlighting, comments, tracked changes and placeholders (`w:highlight`, yellow shading, `[`, `***`), and confirm zero before calling the package final: a submission file never carries highlighting (see /format).
 - Report what is still open (unverified author names, degrees or affiliations, unconfirmed roles, COI, signer, AI Methods sentence) at the top of the reply, not buried in the checklist.
