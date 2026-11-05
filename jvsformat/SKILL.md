@@ -67,6 +67,15 @@ Every one of these came back as a correction on a package that had passed its ow
 - After submission, download the EM-built PDF (JVS-D-xx-xxxxx.pdf) and read every page. It shows the uploaded file names and types (that is how the PNG figures were caught), the metadata screen, and every file as reviewers will see it, including an optional visual abstract with a typo in it.
 - A visual abstract is requested with the revision, not the first submission; uploading it early makes it part of the reviewer PDF.
 
+## 2d. The "Submissions Waiting for Approval by Author" screen
+EM builds the PDF, then shows this checklist before the author can click Approve Submission. Read the built PDF against it, item by item, before approving; a submission returned for correction delays peer review by "20 days or more" (EM's own warning):
+- The Application for Publication is filled out completely, with a box checked in each of the four contribution sections (Research, Manuscript Development, Approval, Accountability) for every author.
+- Every figure and table referenced in the manuscript is in the PDF.
+- Every supplemental table and figure referenced in the manuscript is in the PDF.
+- There is a legend for each figure and table referenced.
+- The Action links (View Submission, Approve Submission) appear only after the PDF has built; wait for them rather than re-uploading.
+- Check the file name printed at the top of each figure and table page of the built PDF against the package: it is how an un-replaced old file shows up (a v48 tables file survived into a v50 build on 5 Nov 2026, with Table 1/2 captions against Table I/II in the text).
+
 ## 3. Package (one folder, numbered files)
 - 00 checklist of every file and every EM item, with answers
 - 01 Cover letter (.docx and .pdf)
@@ -101,6 +110,6 @@ In the 00 checklist, draft an answer for each EM item David will meet, with the 
 - **Authors first.** Run the /format "Author check before every submission" again on the final manuscript, against the roster or a printed byline, not against the other files. A consistency check cannot catch a name that is wrong in the manuscript itself (an Oct 2026 package nearly went out with a coauthor's nickname this way). Then confirm every file (title pages, Abstract file, cover letter, visual abstract author line, Application for Publication names and initials, EM author entries) matches it.
 - Extract text from every file in the package and check against the final manuscript: the title (character for character), author list, order and credentials, every number in the cover letter, visual abstract, figures, legends and Highlights, and table and figure numbering.
 - Run a fresh agent with no access to the drafting history to repeat the check from the files alone, and reconcile what it finds.
-- Run the office's first-pass list (section 2b) as its own check: no embedded figures or tables, separate tables and legends files, conflicts line on the title page, figure and supplement order including legend text, page and line numbers, TIFF figures, post-publication corresponding author, Roman numeral tables.
+- Run the office's first-pass list (section 2b) and the approval-screen list (section 2d) as their own checks: no embedded figures or tables, separate tables and legends files, conflicts line on the title page, figure and supplement order including legend text, page and line numbers, TIFF figures, post-publication corresponding author, Roman numeral tables.
 - Check the counts against the limits again after the final accept. Search every package file for highlighting, comments, tracked changes and placeholders (`w:highlight`, yellow shading, `[`, `***`), and confirm zero before calling the package final: a submission file never carries highlighting (see /format).
 - Report what is still open (unverified author names, degrees or affiliations, unconfirmed roles, COI, signer, AI Methods sentence) at the top of the reply, not buried in the checklist.
